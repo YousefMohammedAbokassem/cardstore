@@ -1,0 +1,447 @@
+@tailwind components;
+@tailwind base;
+@tailwind utilities;
+@import "./var";
+// start login
+body {
+}
+.login {
+  background-image: url("/background.png");
+  background-size: cover;
+  //   background: #ffd7d7;
+  position: relative;
+  border: 1px solid rgba(0, 0, 0, 0.125);
+
+  .form {
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+  }
+  input {
+    border: 1px solid rgb(206, 212, 218);
+    padding: 5px 10px;
+    outline: none;
+    &.active {
+      border-color: red;
+      color: red;
+    }
+  }
+  h4 {
+    background-color: rgb(217 217 217);
+    color: #959595;
+    border-bottom: 1px solid rgba(0, 0, 0, 0.125);
+  }
+  p {
+    color: rgb(133, 100, 4);
+    background-color: rgb(255, 243, 205);
+    border-color: rgb(255, 238, 186);
+  }
+  #currency {
+    padding: 5px 10px;
+    background-image: linear-gradient(white 0, #f3f3f3 100%);
+    border: 1px solid #cccccc;
+    cursor: pointer;
+    outline: none;
+    select {
+    }
+  }
+  form {
+    border: 1px solid rgba(0, 0, 0, 0.125);
+    label {
+      color: #959595;
+    }
+  }
+  &.recover {
+    .link {
+      background-color: rgb(217 217 217);
+      border: 1px solid rgba(0, 0, 0, 0.125);
+      text-decoration: underline;
+      font-weight: bold;
+    }
+  }
+}
+// end login
+// start nav
+.nav {
+  height: 60px;
+  max-height: 60px;
+  width: 100%;
+  position: fixed;
+  top: 0;
+  left: 0;
+  .BarIcon {
+    width: 40px;
+    height: 40px;
+  }
+  .lan {
+    .lanIcon {
+    }
+    .languages {
+      top: 40px;
+      left: 50%;
+      background: #27282a;
+      pointer-events: none;
+      transition: 0.5s;
+      transform: translateX(-50%);
+      transform-origin: top;
+      height: 0;
+      overflow: hidden;
+      pointer-events: none;
+      //onopenandclose
+      &.active {
+        height: 66px;
+        pointer-events: all;
+        transform: translateX(-50%);
+        pointer-events: all;
+      }
+      > li {
+        &:not(:last-child) {
+          border-bottom: 1px solid #fff;
+        }
+      }
+    }
+  }
+  .bar {
+    @include mediaMin("1025px") {
+      display: none !important;
+    }
+  }
+  .currency {
+    .currencies {
+      top: 30px;
+      // background: #111;
+      width: fit-content;
+      left: 50%;
+      transform: translateX(-50%);
+      height: auto;
+
+      > div {
+        padding: 5px 10px;
+        cursor: pointer;
+        &:not(:last-child) {
+          border-bottom: 1px solid #eee;
+        }
+      }
+    }
+  }
+  > ul {
+    position: relative;
+    overflow: hidden;
+    @include mediaMax("768px") {
+      flex-direction: column;
+      position: absolute;
+      left: 0;
+      top: 40px;
+      width: 100%;
+      background: #27282a;
+      z-index: -1;
+      border-radius: 8px;
+    }
+    .tap {
+      --x: 0;
+      --y: 0;
+      --w: 70px;
+      --h: 26px;
+      position: absolute;
+      left: var(--x);
+      top: var(--y);
+      z-index: 1;
+      background: #5d5656;
+      width: var(--w);
+      height: var(--h);
+      border-radius: 8px;
+      transition: 0.5s;
+    }
+    > .lis > li {
+      transition: 0.3s;
+      font-weight: bold;
+      &.active {
+        color: #fff !important;
+        transition-delay: 0.3s;
+      }
+      > a {
+        display: block;
+        padding-top: 10px;
+        padding-bottom: 10px;
+        @include mediaMin("1024px") {
+          padding-top: 5px;
+          padding-bottom: 5px;
+        }
+      }
+    }
+  }
+  .cart {
+    position: relative;
+    .cartNumber {
+      position: absolute;
+      // top: -13px;
+      // right: -13px;
+      // z-index: -1;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      // width: 20px;
+      // height: 20px;
+      // font-size: 13px;
+      font-weight: bold;
+    }
+  }
+}
+
+// end nav
+// start sideBar
+.sideBar {
+  --width: 250px;
+  top: 60px;
+  left: 0;
+  // height: calc(100vh - 60px);
+  max-height: calc(100vh - 60px);
+  width: var(--width);
+  transition: 0.5s;
+  overflow: hidden;
+  //###################onarabic&.ar:;
+  &.ar {
+    left: auto;
+    right: 0;
+  }
+  @include mediaMax("1024px") {
+    left: calc(var(--width) * -1);
+    &.ar {
+      left: auto;
+      right: calc(var(--width) * -1);
+    }
+  }
+  &.showSideBar {
+    //###################onarabic&.ar:;
+    @include mediaMax("1024px") {
+      left: 0;
+      &.ar {
+        left: auto;
+        right: 0;
+      }
+    }
+  }
+  > a {
+    height: 40px;
+    max-height: 40px;
+    position: relative;
+    display: flex;
+    align-items: center;
+    z-index: 2;
+    &:hover {
+      background-color: #959595;
+      color: #111 !important;
+      border-radius: 6px;
+      font-weight: bold;
+    }
+    &.active {
+      color: #111;
+      font-weight: bold;
+    }
+  }
+}
+
+// end sideBar
+// home
+.product {
+}
+.home {
+  --width: 0;
+  position: absolute;
+  top: 60px;
+  width: 100%;
+  padding-bottom: 75px;
+  // background-color: red;
+  // ####################
+  .images {
+    // @include mediaMax("567px") {
+    //   display: grid;
+    //   grid-template-columns: repeat(3, auto);
+    // }
+    .childProduct {
+      box-shadow: 0px 0px 20px 0px #71717147;
+      > div {
+        border: 1px solid #71717147;
+      }
+      a {
+        margin-bottom: 0 !important;
+      }
+      img {
+      }
+    }
+  }
+  .search {
+    #search {
+    }
+    > div > span {
+      user-select: none;
+      top: 50%;
+      cursor: pointer;
+      transform: translateY(-50%);
+      &.ar {
+        right: auto;
+        left: 10px;
+      }
+    }
+  }
+
+  // payInputs
+  &.payInputs {
+    .inputs {
+      input {
+        padding: 5px 10px;
+      }
+    }
+  }
+}
+
+.swiper {
+  width: 100%;
+}
+
+.swiper-slide {
+  background-position: center;
+  background-size: cover;
+}
+
+.swiper-slide img {
+  display: block;
+  width: 100%;
+  height: 100%;
+}
+.sliderEffect {
+  box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+}
+.footer {
+  position: fixed;
+  bottom: 0;
+  // left: 250px;
+  width: 100%;
+}
+.beforeWow {
+  transition: 1s;
+  opacity: 0;
+  transform: translateY(100%);
+}
+.wowas {
+  opacity: 1 !important;
+  transform: translateY(0%) !important;
+}
+.inputPhone {
+  width: 100% !important;
+}
+// start privacy
+.privacy {
+  border: 1px solid rgba(0, 0, 0, 0.125);
+  > h3 {
+    border-bottom: 1px solid rgba(0, 0, 0, 0.125);
+  }
+  p,
+  ul li {
+    line-height: 190%;
+  }
+  p {
+    font-weight: 500;
+  }
+}
+// end privacy
+.categories {
+  opacity: 0.7;
+  &.active {
+    opacity: 1;
+  }
+}
+div.disabled {
+  color: #999; /* تحديد لون النص للرابط الغير فعّال */
+  text-decoration: none; /* إزالة التأثير الافتراضي للرابط */
+  cursor: not-allowed; /* تعيين الفأرة لتظهر علامة العدم المسموحة */
+  img {
+    filter: grayscale(1);
+    opacity: 0.7;
+  }
+}
+a.disabled {
+  pointer-events: none; /* تعطيل التفاعل بواسطة المؤشر */
+}
+.cards {
+  transition: 0.5s;
+  opacity: 0.75;
+
+  &:hover,
+  &.active {
+    box-shadow: 0px 0px 25px 0px #71717147;
+    opacity: 1;
+    border: 1px solid #bbbbbb;
+  }
+  &:hover {
+    transform: scale(1.1);
+  }
+  &:hover {
+    transform: scale(1.05);
+  }
+}
+.disabledCard {
+  color: #999; /* تحديد لون النص للرابط الغير فعّال */
+  text-decoration: none; /* إزالة التأثير الافتراضي للرابط */
+  // opacity: 0.5;
+  pointer-events: none;
+  user-select: none;
+  position: relative;
+  &::before {
+    content: "";
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    cursor: not-allowed;
+  }
+  .disabledCardChild {
+  }
+}
+// .hoverButtons {
+//   --x: 0;
+//   --y: 0;
+//   position: relative;
+//   overflow: hidden;
+//   z-index: 1;
+
+//   &::before {
+//     content: "";
+//     position: absolute;
+//     width: 0;
+//     height: 0;
+//     border-radius: 50%;
+//     transition: 0.5s linear;
+//     transform: translate(-50%, -50%);
+//     transition-property: width, height;
+//     left: var(--x);
+//     top: var(--y);
+//     z-index: -1;
+//   }
+//   &:hover::before {
+//     width: 200px;
+//     height: 200px;
+//   }
+//   &.registerButton {
+//     &::before {
+//       background-color: blue;
+//     }
+//   }
+//   &.logInButton {
+//     &::before {
+//       background-color: green;
+//     }
+//   }
+// }
+.ccc {
+  transition: 0.5s;
+}
+.direction {
+  direction: ltr;
+}
+.notFound {
+  height: calc(100vh - 60px);
+}

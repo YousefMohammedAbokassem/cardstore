@@ -1,0 +1,192 @@
+
+//  media queries
+// bg
+// #212529
+// #055160
+// product
+//#cf4956fc
+@mixin mediaMax($point) {
+  @media (max-width: $point) {
+    @content;
+  }
+}
+@mixin mediaMin($point) {
+  @media (min-width: $point) {
+    @content;
+  }
+}
+@mixin mediaMinMax($pointMin, $pointMax) {
+  @media (min-width: $pointMin) and (max-width: $pointMax) {
+    @content;
+  }
+}
+
+//  media queries
+@mixin gradient($deg) {
+  background-image: linear-gradient(
+    $deg,
+    var(--main-color),
+    var(--second-color)
+  );
+}
+// fill color
+%fillColor {
+  background-clip: text;
+  -moz-background-clip: text;
+  -o-background-clip: text;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+// fill color
+// gradient text
+@mixin textgdarient {
+  @include gradient(45deg);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+// @mixin gradient2($deg) {
+//   background-image: linear-gradient($deg, $grad2-clr-left, $grad2-clr-right);
+// }
+// light and dark mode
+// list style
+%list-reset {
+  padding: 0px;
+  margin: 0px;
+  list-style: none;
+}
+// list style
+// circle
+@mixin circle($value) {
+  width: $value;
+  height: $value;
+  border-radius: 50%;
+}
+// circle
+// centering by flex
+%flexcenter {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+// centering by flex
+// overlay
+%center50{
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%,-50%);
+}
+@mixin overlay($color, $opacity) {
+  content: "";
+  position: absolute;
+  left: 0px;
+  top: 0px;
+  width: 100%;
+  height: 100%;
+  background-color: rgba($color, $opacity);
+}
+// overlay
+// grid
+@mixin gridcol($min, $gap) {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax($min, 1fr));
+  gap: $gap;
+}
+// grid
+// animation
+@mixin keyF($animation-name) {
+  @keyframes #{$animation-name} {
+    @content;
+  }
+  @-webkit-keyframes #{$animation-name} {
+    @content;
+  }
+}
+// animation
+
+// hover card
+@mixin cardhover($elementName, $rotateDeg, $rotateWay) {
+  .#{$elementName} {
+    position: relative;
+    width: 300px;
+    height: 400px;
+    transition: 0.5s;
+    transform-style: preserve-3d;
+    transform: perspective(1000px);
+    .card1,
+    .card2 {
+      position: absolute;
+      width: 100%;
+      height: 100%;
+      left: 0px;
+      top: 0px;
+      text-transform: capitalize;
+      color: white;
+    }
+    .card2 {
+      backface-visibility: hidden;
+      @if $rotateWay == "y" {
+        transform: rotateY($rotateDeg);
+      } @else {
+        transform: rotateX($rotateDeg);
+      }
+    }
+    &:hover {
+      @if $rotateWay == "y" {
+        transform: rotateY(-$rotateDeg);
+      } @else {
+        transform: rotateX(-$rotateDeg);
+      }
+    }
+  }
+}
+// zic
+// shadow
+@mixin shadow {
+  box-shadow: 0px 12px 20px 0px rgba(black, 0.13),
+    0px 2px 4px 0px rgba(black, 0.12);
+}
+// shadow
+@mixin ziczack($className, $height) {
+  .#{$className} {
+    position: relative;
+    z-index: 100;
+    position: absolute;
+    z-index: 100;
+    height: 40px;
+    background-size: 40px 40px;
+    width: 100%;
+    background-image: linear-gradient(
+        135deg,
+        var(--light-bg) 25%,
+        transparent 25%
+      ),
+      linear-gradient(225deg, var(--light-bg) 25%, transparent 25%);
+  }
+}
+
+// zic
+// hover card
+// container
+@mixin container {
+  @media (min-width: 768px) {
+    .container {
+      width: 750px;
+    }
+  }
+  /* Medium */
+  @media (min-width: 992px) {
+    .container {
+      width: 970px;
+    }
+  }
+  /* Large */
+  @media (min-width: 1200px) {
+    .container {
+      width: 1170px;
+    }
+  }
+}
+// container
+
+
