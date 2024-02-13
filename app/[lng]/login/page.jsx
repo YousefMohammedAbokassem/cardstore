@@ -57,7 +57,7 @@ export default function page({ params: { lng } }) {
       setLoading(false);
       console.log(res.error);
       setError(res.error);
-      throw new Error(res.error);
+      // throw new Error(res.error);
     }
   };
   // ar/asdas

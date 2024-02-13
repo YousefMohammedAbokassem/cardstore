@@ -25,7 +25,7 @@ export default function Games({ lng }) {
       setLoading(false);
     } catch (error) {
       setLoading(false);
-      throw new Error(error);
+      // throw new Error(error);
     }
   };
   useEffect(() => {

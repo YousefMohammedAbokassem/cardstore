@@ -11,6 +11,7 @@ export default async function Categories() {
   } catch (error) {
     // console.log(error);
     // setLoading(false);
-    throw new Error(error);
+    return error
+    // throw new Error(error);
   }
 }
