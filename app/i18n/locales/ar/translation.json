@@ -46,5 +46,6 @@
   "thePhoneOrNumber": "رقم الهاتف او كلمة المرور غير صحيحة",
   "theName": "الاسم",
   "thePhone": "الرقم",
-  "theLocation": "الموقع"
+  "theLocation": "الموقع",
+  "areYouSignOut": "هل أنت متأكد من أنك تريد تسجيل الخروج"
 }

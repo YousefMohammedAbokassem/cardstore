@@ -46,5 +46,6 @@
   "thePhoneOrNumber": "the phone or password is incorrect",
   "theName": "Name",
   "thePhone": "phone",
-  "theLocation": "location"
+  "theLocation": "location",
+  "areYouSignOut": "Are you sure you want to sign out"
 }

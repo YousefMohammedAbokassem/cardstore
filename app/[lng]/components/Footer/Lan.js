@@ -10,7 +10,7 @@ import { usePathname } from "next/navigation";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faEarthAmericas, faLanguage } from "@fortawesome/free-solid-svg-icons";
 
-function Lan({ lng, starter }) {
+function Lan({ lng }) {
   const { t } = useTranslation(lng);
   const pathname = usePathname();
   function name() {
@@ -33,9 +33,6 @@ function Lan({ lng, starter }) {
   const set = (e) => {
     localStorage.setItem("i18nextLng", e);
     showLanguage();
-    setTimeout(() => {
-      starter();
-    }, 0);
   };
   return (
     <>

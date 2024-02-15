@@ -63,19 +63,24 @@ export default function Nav({ lng }) {
     tap.style.setProperty("--h", `${firstLiH}px`);
     tap.style.backgroundColor = li.dataset.color;
   };
+  const session = useSession();
   useEffect(() => {
-    starter();
     window.onresize = () => {
       starter();
 
       // tap.style.cssText = `width:${firstLiW}px; height:${firstLiH}px;`;
     };
+    starter();
+    setTimeout(() => {
+      const li = document.querySelector("li.active");
+      li.click();
+    }, 0);
   }, [lng]);
   //
-  const session = useSession();
   const fetchNumbers = async () => {
     if (session.status === "authenticated") {
       const token = await session?.data?.user?.token;
+      starter();
       try {
         const res = await axios.get(HELPNUMBERS, {
           headers: {
@@ -84,6 +89,8 @@ export default function Nav({ lng }) {
         });
         setNumbers(res.data.data);
       } catch (error) {}
+    } else {
+      starter();
     }
   };
   useEffect(() => {
@@ -153,6 +160,7 @@ export default function Nav({ lng }) {
     // showCart();
   }, []);
   const [cartLength, setCartLength] = useState(0);
+  const [popup, setPopup] = useState(false);
   // const showCart = async () => {
   //   const cart = localStorage.getItem("cart");
   //   await setShopping(JSON.parse(cart));
@@ -285,7 +293,17 @@ export default function Nav({ lng }) {
                         // ############################
                         // setPathLink(link.path);
                         // console.log(pathLink);
+                        const ul = document.querySelector(".myUl"),
+                          lis = ul.querySelectorAll("li");
+                        lis.forEach((li) => {
+                          li.classList.remove("active");
+                        });
+                        const logLi = document.querySelector(".logLi");
+                        logLi.classList.add("active");
                         route.push("/login");
+                        setTimeout(() => {
+                          starter();
+                        }, 0);
                       }
                     }
                   }}
@@ -306,7 +324,7 @@ export default function Nav({ lng }) {
                 <li
                   className={`${
                     path.includes("login") ? "active" : ""
-                  } w-full  lg:w-auto block z-10 text-[#878787] dark:text-[#fff]`}
+                  } w-full logLi  lg:w-auto block z-10 text-[#878787] dark:text-[#fff]`}
                   onClick={(e) => {
                     tapWidth(e);
                     // signIn();
@@ -346,7 +364,8 @@ export default function Nav({ lng }) {
                 } w-full  lg:w-auto block z-10 text-[#878787] dark:text-[#fff]`}
                 onClick={(e) => {
                   tapWidth(e);
-                  signOut({ redirect: false });
+                  // signOut({ redirect: false });
+                  setPopup(true);
                   route.push("/");
                 }}
                 data-color={"red"}
@@ -369,6 +388,44 @@ export default function Nav({ lng }) {
           className="bar md:h-7 h-5 text-[#5d5656] dark:text-white block lg:hidden cursor-pointer "
           onClick={showSideBar}
         />
+        {popup ? (
+          <div className="fixed left-0 top-0 z-50 h-screen bg-[#14141491] w-full">
+            <div className="flex flex-col items-center justify-center gap-2 p-5 rounded-lg mx-auto w-[250px] h-auto bg-[#e9ecef] dark:bg-[#27282a]">
+              <p className="text-[#878787] dark:text-[#fff] text-center capitalize">
+                {t("areYouSignOut")}
+                {lng === "ar" ? "؟" : "?"}
+              </p>
+              <div className="buttons flex items-center gap-2 ">
+                <button
+                  type="button "
+                  className="bg-blue-500 capitalize rounded-sm px-2 py-1 text-[#efefefeb] dark:text-[#efefefeb]"
+                  onClick={() => {
+                    signOut({ redirect: false });
+                    setPopup(false);
+                    starter();
+                  }}
+                >
+                  {t("yes")}
+                </button>
+                <button
+                  type="button "
+                  className="bg-red-500 capitalize rounded-sm px-2 py-1 text-[#efefefeb] dark:text-[#efefefeb]"
+                  onClick={() => {
+                    setPopup(!popup);
+                    const ul = document.querySelector(".myUl"),
+                      li = ul.querySelector("li");
+                    li.classList.add("active");
+                    starter();
+                  }}
+                >
+                  {t("no")}
+                </button>
+              </div>
+            </div>
+          </div>
+        ) : (
+          ""
+        )}
       </nav>
     </>
   );

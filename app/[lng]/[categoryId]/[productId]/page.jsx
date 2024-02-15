@@ -10,6 +10,7 @@ import EffectFade from "../../components/games/EffectFade";
 import { Values } from "../../components/Context/Context";
 import Skeleton from "../../components/Skeleton/Skeleton";
 import { LOCALAPI, PRODUCYTINFO } from "../../components/lib/apis";
+import { useSession } from "next-auth/react";
 
 export default function page({ params: { categoryId, productId, lng } }) {
   const [loading, setLoading] = useState(true);
@@ -26,6 +27,8 @@ export default function page({ params: { categoryId, productId, lng } }) {
   const [showSuccessful, setShowSuccessful] = useState(false);
 
   const { currency, setShopping, shopping } = useContext(Values);
+  const session = useSession();
+
   const router = useRouter();
   const fetchApi = async () => {
     try {
@@ -168,11 +171,11 @@ export default function page({ params: { categoryId, productId, lng } }) {
                         <div
                           className={`${
                             item.is_available === 0 ? "disabledCard" : ""
-                          } pointer-events-none w-48 p-2 block border dark:border-[#33373b] childProduct rounded`}
+                          } pointer-events-none w-full sm:w-48 p-2 block border dark:border-[#33373b] childProduct rounded`}
                           role="status"
                         >
                           <img
-                            className="flex items-center justify-center h-48 mb-2 rounded"
+                            className="flex items-center justify-center h-48 mb-2 rounded w-full"
                             src={`${LOCALAPI}${item?.card_image}`}
                             width={400}
                             height={400}
@@ -273,7 +276,13 @@ export default function page({ params: { categoryId, productId, lng } }) {
           className={`${
             info?.has_cards === 1 ? "active" : ""
           } px-2 py-2 w-full bg-[#5c5cdf] font-bold text-white dark:text-[#c7c7c7] rounded-md`}
-          onClick={() => setPopup(!popup)}
+          onClick={() => {
+            if (session.status === "unauthenticated") {
+              router.push("/login");
+            } else {
+              setPopup(!popup);
+            }
+          }}
         >
           {t("add")}
         </button>

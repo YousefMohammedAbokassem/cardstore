@@ -6,9 +6,9 @@ const Skeleton = () => {
           <div
             key={i}
             role="status"
-            className=" w-48 p-2 border border-gray-200 dark:border-[#33373b] rounded shadow animate-pulse"
+            className="w-full sm:w-48 p-2 border border-gray-200 dark:border-[#33373b] rounded shadow animate-pulse"
           >
-            <div className="flex items-center justify-center h-48 mb-4 bg-gray-300 dark:bg-[#33373b] rounded ">
+            <div className="w-full flex items-center justify-center h-48 mb-4 bg-gray-300 dark:bg-[#33373b] rounded ">
               <svg
                 className="w-10 h-10 text-gray-200 dark:text-[#4d4d4d] "
                 aria-hidden="true"
