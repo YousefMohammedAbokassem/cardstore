@@ -48,7 +48,7 @@ export default function page({ params: { categoryId, lng } }) {
           info.map((item, i) => {
             return (
               <Tilt options={defaultOptions}>
-                <div key={item.id}>
+                <div key={item.id} className="transitionDuration">
                   <Link
                     href={`${path}/${item.id}`}
                     role="status"

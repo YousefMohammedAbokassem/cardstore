@@ -138,7 +138,9 @@ export default function Games({ lng }) {
                 <Tilt options={defaultOptions}>
                   <div
                     key={item.id}
-                    className={`${item.is_available === 0 ? "disabled" : ""} `}
+                    className={`${
+                      item.is_available === 0 ? "disabled" : ""
+                    }  transitionDuration`}
                   >
                     <Link
                       href={`${path}/${item.id}`}
@@ -166,10 +168,8 @@ export default function Games({ lng }) {
             })
         ) : (
           <div className="text-[#27282a] dark:text-[#c7c7c7] text-2xl capitalize font-bold">
-            {t("sorry")}
-            <span className=" text-red-600 dark:text-red-700">
-              {search}
-            </span>{" "}
+            {t("sorry")}{" "}
+            <span className=" text-red-600 dark:text-red-700">{search}</span>{" "}
           </div>
         )}
         {}

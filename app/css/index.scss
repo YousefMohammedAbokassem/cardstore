@@ -454,3 +454,6 @@ a.disabled {
 .notFound {
   height: calc(100vh - 60px);
 }
+.transitionDuration {
+  transition: 0.5s;
+}
