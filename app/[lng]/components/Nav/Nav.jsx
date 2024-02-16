@@ -179,11 +179,6 @@ export default function Nav({ lng }) {
             } w-fit lg:w-auto block z-10 text-[#878787] dark:text-[#5d5656] cart`}
             onClick={(e) => {
               // tapWidth(e);
-              if (session.status !== "authenticated") {
-                // setPathLink(link.path);
-                // console.log(pathLink);
-                route.push("/login");
-              }
             }}
             // data-color={"#959595"}
           >
@@ -300,7 +295,7 @@ export default function Nav({ lng }) {
                         });
                         const logLi = document.querySelector(".logLi");
                         logLi.classList.add("active");
-                        route.push("/login");
+                        // route.push("/login");
                         setTimeout(() => {
                           starter();
                         }, 0);
