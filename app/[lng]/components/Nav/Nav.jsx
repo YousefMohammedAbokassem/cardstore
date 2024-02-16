@@ -241,7 +241,7 @@ export default function Nav({ lng }) {
             <div className="tap z-10"></div>
             {[
               {
-                linkName: "home",
+                linkName: "homeaa",
                 path: "/",
                 className: `${
                   path.includes("privacy-policy") ||
