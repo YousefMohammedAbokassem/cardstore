@@ -241,7 +241,7 @@ export default function Nav({ lng }) {
             <div className="tap z-10"></div>
             {[
               {
-                linkName: "homeaa",
+                linkName: "home",
                 path: "/",
                 className: `${
                   path.includes("privacy-policy") ||
@@ -309,7 +309,7 @@ export default function Nav({ lng }) {
                     className="px-3 w-full block capitalize"
                     data-color={link.datacolor}
                   >
-                    {t(link.linkName)}a
+                    {t(link.linkName)}
                   </Link>
                 </li>
               );
