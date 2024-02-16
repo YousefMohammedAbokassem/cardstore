@@ -309,7 +309,7 @@ export default function Nav({ lng }) {
                     className="px-3 w-full block capitalize"
                     data-color={link.datacolor}
                   >
-                    {t(link.linkName)}
+                    {t(link.linkName)}a
                   </Link>
                 </li>
               );
