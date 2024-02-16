@@ -59,6 +59,8 @@ export default async function page({ params: { lng } }) {
           );
         })}
       </div>
+
+  
     </div>
   );
 }

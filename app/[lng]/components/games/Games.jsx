@@ -135,9 +135,12 @@ export default function Games({ lng }) {
             })
             .map((item, i) => {
               return (
-                <Tilt options={defaultOptions} className="transitionDuration">
+                <Tilt
+                  options={defaultOptions}
+                  className="transitionDuration"
+                  key={item.id}
+                >
                   <div
-                    key={item.id}
                     className={`${item.is_available === 0 ? "disabled" : ""}  `}
                   >
                     <Link

@@ -18,11 +18,11 @@ export async function generateMetadata({
     };
   }
 }
-// export async function generateStaticParams({ params: { categoryId } }) {
-//   const fetchApiUser = await axios.get(`${PRODUCTAPI}/${categoryId}`);
-//   const data = fetchApiUser.data.data;
-//   return data.map((item) => ({ productId: item.id.toString() }));
-// }
+export async function generateStaticParams({ params: { categoryId } }) {
+  const fetchApiUser = await axios.get(`${PRODUCTAPI}/${categoryId}`);
+  const data = fetchApiUser.data.data;
+  return data.map((item) => ({ productId: item.id.toString() }));
+}
 export default function layout({ children }) {
   return <>{children}</>;
 }
