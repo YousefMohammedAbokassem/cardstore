@@ -9,3 +9,4 @@ export const LOGIN = "https://gamecards.technoplus.dev/api/customer/login";
 export const PRODUCYTINFO = "https://gamecards.technoplus.dev/api/customer/get_product_info";
 export const PRODUCTAPI = "https://gamecards.technoplus.dev/api/customer/get_category_products";
 export const ADSAPI = "https://gamecards.technoplus.dev/api/customer/get_ads";
+export const PROFILE = "https://gamecards.technoplus.dev/api/customer/my_profile";

@@ -32,6 +32,10 @@ export default function page({ params: { lng } }) {
       // console.log(value.slice(value.indexOf(country.dialCode).length));
     }
   };
+  const [image, setImage] = useState("");
+  const setImageFun = (e) => {
+    setImage(e.target.files[0]);
+  };
   const submitInfo = async (e) => {
     e.preventDefault();
     const passwordInput = document.getElementById("password"),
@@ -47,7 +51,9 @@ export default function page({ params: { lng } }) {
           phone: tel,
           password: password, // Make sure to send the actual password string
           fcm_token: "1111",
+          image: image,
         });
+        console.log(response);
         const res = await signIn("credentials", {
           phone: tel,
           password: password,
@@ -126,10 +132,11 @@ export default function page({ params: { lng } }) {
           </label> */}
           <div className="select flex flex-col outline-none gap-2 mb-4 ">
             <span className="text-[#959595] capitalize">{t("currency")}</span>
-            <select name="Currency" id="currency" className="rounded-sm">
+            <input type="file" name="" id="" onChange={setImageFun} />
+            {/* <select name="Currency" id="currency" className="rounded-sm">
               <option value="USD">USD</option>
               <option value="TR">TR</option>
-            </select>
+            </select> */}
           </div>
           {/* PASSWORD */}
           <div className="gap-2  flex-col sm:flex-row flex">

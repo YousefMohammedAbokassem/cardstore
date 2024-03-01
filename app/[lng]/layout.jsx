@@ -14,7 +14,7 @@ const tajawal = Tajawal({
 });
 
 export async function generateStaticParams() {
-  return languages.map((lng) => ({ lng }));
+  return languages.map((lng) => ({ lng })); 
 }
 export async function generateMetadata({ params: { lng } }) {
   const { t } = await useTranslation(lng);

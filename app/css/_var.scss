@@ -1,10 +1,3 @@
-
-//  media queries
-// bg
-// #212529
-// #055160
-// product
-//#cf4956fc
 @mixin mediaMax($point) {
   @media (max-width: $point) {
     @content;

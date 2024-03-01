@@ -12,7 +12,7 @@ export const config = {
     // "/en/shopping",
   ],
 };
-const authToken = "next-auth.session-token";
+const authToken = "__Secure-next-auth.session-token";
 export function middleware(req) {
   if (
     req.nextUrl.pathname.includes("shopping") ||
